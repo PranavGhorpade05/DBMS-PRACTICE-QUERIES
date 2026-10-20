@@ -1,0 +1,14 @@
+36. Select all the possible combinations of customers that you can assign.
+--> SELECT c1.CNAME, c2.CNAME FROM customers c1 CROSS JOIN customers c2;
+
+37. Select all orders that are greater than the average for October 4.
+--> SELECT * FROM orders WHERE AMT > (SELECT AVG(AMT) FROM orders WHERE ODATE = '1996-10-04');
+
+38. Write a select command using a corelated subquery that selects the names and numbers of all customers with ratings equal to the maximum for their city.
+--> SELECT c1.CNAME, c1.CNUM FROM customers c1 WHERE c1.RATING = (SELECT MAX(c2.RATING) FROM customers c2 WHERE c2.CITY = c1.CITY);
+
+39. Write a query that totals the orders for each day and places the results in descending order.
+--> SELECT ODATE, SUM(AMT) AS TOTAL FROM orders GROUP BY ODATE ORDER BY TOTAL DESC;
+
+40. Write a select command that produces the rating followed by the name of each customer in San Jose.
+--> SELECT RATING, CNAME FROM customers WHERE CITY = 'San Jose';
